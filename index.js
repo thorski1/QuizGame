@@ -55,7 +55,7 @@ tempo = 100;
 
 playMelody();
 
-console.log(`Welcome to the Quiz Game!
+alert(`Welcome to the Quiz Game!
 You will be given a question with 3 multiple choice answers. If you choose the correct one, you advance to the next question. If you choose incorrectly, you lose a life! You only have 3 lives, so be careful!`);
 
 let life = [" 💗", " 💗", " 💗"];
@@ -63,10 +63,9 @@ let life = [" 💗", " 💗", " 💗"];
 const q1 = {
 	q: `1) What is “closure” in JavaScript?
 
-  a) A function that takes a function as a parameter,
-  b) A statement that breaks you out of a loop?
-  c) A closure is a function having access to the parent  scope, even after the parent function has closed.
-  
+        a) A function that takes a function as a parameter.
+        b) A statement that breaks you out of a loop.
+        c) A closure is a function having access to the parent  scope, even after the parent function has closed.
   `,
 	right: "c",
 	wrong1: "b",
@@ -77,12 +76,13 @@ const q2 = {
 	q: `2) What will this print to the console?
   const num = 40;
   let final;
-    if (num > 100) {
-  final = null;
+  if (num > 100) {
+    final = null;
   }  else {
-  final = num * 2
+    final = num * 2
   }
   console.log(final)
+
     a) 40
     b) 100
     c) 80
@@ -93,10 +93,11 @@ const q2 = {
 };
 
 const q3 = {
-	q: `3) What does the native method 'reduce' do?
-  a) The reduce method reduces the array to a single   value.
-  b) Reduce loops though the arrays 
-  c) It allows an engineer to compress larg amounts of data into a smaller file.
+    q: `3) What does the native method 'reduce' do?
+    
+        a) The reduce method reduces the array to a single   value.
+        b) Reduce loops though the arrays.
+        c) It allows an engineer to compress large amounts of data into a smaller file.
   `,
 	right: "a",
 	wrong1: "b",
@@ -104,11 +105,11 @@ const q3 = {
 };
 
 const q4 = {
-	q: `4) What is a callback function?
-  a) A callback is a higher order function. 
-  b) A callback is a function that is returned from another function.
-  c) A callback is a function that is passed as an argument to another function.
-  
+    q: `4) What is a callback function?
+    
+        a) A callback is a higher order function. 
+        b) A callback is a function that is returned from another function.
+        c) A callback is a function that is passed as an argument to another function.
   `,
 	right: "c",
 	wrong1: "b",
@@ -126,17 +127,18 @@ const arrOfQ = [q1, q2, q3, q4, q5];
 
 function askQuestion(qArr, i = 0) {
 	if (life.length === 0) {
-		return "💀💀💀";
+        alert("💀💀💀");
+        return;
 	} else if (qArr[i] === undefined) {
-		return "You Win!, congratulations!";
+		alert("You Win!, congratulations!");
 	}
 
-	console.log(life.join(""));
+	alert(`Lives Left: ${life.join("")}`);
 
 	let ans = prompt(qArr[i]["q"]);
 
 	if (ans.toLowerCase() === qArr[i]["right"]) {
-		console.log("correct!");
+		alert("correct!");
 		return askQuestion(arrOfQ, i + 1);
 	}
 
@@ -144,12 +146,12 @@ function askQuestion(qArr, i = 0) {
 		ans.toLowerCase() === qArr[i].wrong1 ||
 		ans.toLowerCase() === qArr[i].wrong2
 	) {
-		console.log("wrong!");
-		console.log("Guess again, dummy!");
+		alert("wrong!");
+		alert("Guess again, dummy!");
 		life.pop();
 		return askQuestion(arrOfQ, i);
 	}
-	console.log("Please choose a, b, or c...");
+	alert("Please choose a, b, or c...");
 	return askQuestion(arrOfQ, i);
 }
 
